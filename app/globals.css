@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-primary: #b8860b;
+  --brand-secondary: #66521a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* Custom utilities */
+@layer utilities {
+  .text-brand { color: var(--brand-primary); }
+  .bg-brand { background-color: var(--brand-primary); }
+  .border-brand { border-color: var(--brand-primary); }
+  .ring-brand { --tw-ring-color: var(--brand-primary); }
+
+  .gradient-brand {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #222 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Admin specific */
+.admin-sidebar {
+  background: #0a0a0a;
+  border-right: 1px solid #1f1f1f;
+}
+
+.admin-card {
+  background: #111;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+}
+
+/* Toast override */
+[data-sonner-toaster] { z-index: 9999 !important; }
+
